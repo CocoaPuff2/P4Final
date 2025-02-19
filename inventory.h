@@ -17,6 +17,7 @@ public:
     void borrowItem(const std::string& title);
     void returnItem(const std::string& title);
     void displayInventory() const;
+    void loadMovies(const std::string& filename);
 };
 
 #endif //MY_EXECUTABLE_INVENTORY_H

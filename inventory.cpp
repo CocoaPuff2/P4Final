@@ -1,5 +1,6 @@
 #include "inventory.h"
 #include "media.h"
+#include <fstream>
 #include <iostream>
 #include <unordered_map>
 #include <vector>
@@ -10,6 +11,62 @@ Inventory::~Inventory() {
     for (auto& entry : mediaList) {
         delete entry.second;  // delete dynamically alloc mem
     }
+}
+
+void loadMovies(const string& filename) {
+    ifstream infile("data4movies.txt");
+    if (!infile) {
+        cout << "File could not be opened." << endl;
+        return;
+    }
+
+    char genre;
+    int stock;
+    std::string director, title;
+    int year;
+    // Only for Classics
+    string majorActor;
+    int releaseMonth;
+
+    while (infile >> genre) {  // Read the first character (genre)
+        infile.ignore(1, ' '); // to ignore comma and space
+
+        infile >> stock; // Read stock
+        infile.ignore(1, ' ');
+
+        getline(infile, director, ','); // Read director
+        infile.ignore(1, ' ');
+
+        getline(infile, title, ',');   // Read title
+        infile.ignore(1, ' ');
+
+        // Genre checking
+        if (genre != 'C' && genre != 'D' && genre != 'F') {
+            std::cerr << "ERROR: " << genre << " Invalid Genre. Try Again." << std::endl;
+            infile.ignore(numeric_limits<streamsize>::max(), '\n'); // Skip the rest of the line
+            continue;
+        }
+
+        // Classics
+        // includes special cases
+        if (genre == 'C') {
+            infile >> majorActor; // First name of major actor
+            std::string lastName;
+            infile >> lastName;   // Last name of major actor
+            majorActor += " " + lastName;
+
+            infile >> releaseMonth >> year;
+
+            // Media* movie = new Classic(genre, stock, director, title, majorActor, month, year);
+            // mediaList[title] = movie;
+        }
+
+
+    }
+
+
+
+
 }
 
 void Inventory::addMedia(Media* media) {
@@ -29,8 +86,7 @@ void Inventory::borrowItem(const std::string& title) {
     if (it != mediaList.end()) {
         // Check if the item is available for borrowing
         if (it->second->getStock() > 0) {
-            // todo
-            it->second->decreaseStock();  // Decrease stock for the borrowed item
+            it->second->borrowMovie();  // decrease stock for the borrowed item
             cout << "Successfully borrowed: " << title << std::endl;
         } else {
             cout << "Borrow Transaction Failed -- Not enough in the Stock" << endl;
@@ -39,6 +95,16 @@ void Inventory::borrowItem(const std::string& title) {
         cout << "Borrow Transaction Failed -- Movie does not Exist in the Inventory" << endl;
     }
 
+}
+
+void Inventory::returnItem(const std::string& title) {
+    auto it = mediaList.find(title);
+    if (it != mediaList.end()) {
+        it->second->returnMovie();
+        cout << "Successfully returned: " << title << std::endl;
+    } else {
+        cout << "Return Transaction Failed -- Movie does not Exist in the Inventory" << endl;
+    }
 }
 
 
