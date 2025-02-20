@@ -10,7 +10,8 @@ using namespace std;
 
 class Drama : public Media {
     Drama(int stock, string director, string title, int year);
-    void display() const override;
+    ~Drama();
+    void display() const; // specifically for drama
 };
 
 #endif //MY_EXECUTABLE_DRAMA_H

@@ -30,17 +30,25 @@ private:
     int customerID;
     string firstName;
     string lastName;
-   vector<Transaction> history; // Stores transaction history
+    Transaction* startTransaction; // to store history
+    Customer* nextCustomer;
 
 public:
+    Customer();
     Customer(int customerID, const string& firstName, const string& lastName);
+    // todo virtual?
+    ~Customer();
 
-    int getID() const { return customerID; }
+    int getCustomerID() const;
+    Transaction* getStartTransaction();
+    string getFullName();
+    string getFirst();
+    string getLast();
 
-    string getFullName() const { return firstName + " " + lastName; }
-
-    void addTransaction(const Transaction& transaction);
-    void displayHistory() const;
+    Customer* getNextCustomer();
+    void addNewCustomer(Customer* customer);
+    void addTransaction(Transaction* transaction); // add new transaction
+    void displayHistory() const; // to display full transaction history
 
 
 };

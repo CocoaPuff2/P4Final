@@ -2,12 +2,37 @@
 #include <iostream>
 using namespace std;
 
-Transaction::Transaction(char type, int customerID, string movieTitle)
-        : type(type), customerID(customerID), movieTitle(movieTitle) {}
-
-void Transaction::display() const {
-    cout << "Transaction: " << (type == 'B' ? "Borrow" : "Return")
-              << " - Customer ID: " << customerID
-              << ", Movie: " << movieTitle << endl;
+// default constructor
+Transaction::Transaction() {
+    type = ' ';
+    customerID = 0000;
+    movieTitle = " ";
 }
+
+// param constructor
+Transaction::Transaction(char type, int customerID, string movieTitle)
+        : type(type), customerID(customerID), movieTitle(movieTitle) {
+
+}
+
+// destructor
+Transaction::~Transaction() {
+
+}
+
+// Can be B or R
+string Transaction::getType() {
+
+}
+
+Transaction* Transaction::getNextTransaction(){
+
+}
+
+
+void Transaction::setLastTransaction(Transaction* transaction){
+
+}
+
+
 

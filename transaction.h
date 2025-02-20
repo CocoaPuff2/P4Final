@@ -13,8 +13,17 @@ private:
     string movieTitle;
 
 public:
+    Transaction();
     Transaction(char type, int customerID, string movieTitle);
-    void display() const;
+    // NOTE: destructors should "ALWAYS" be virtual! :)
+    virtual ~Transaction();
+    // NOTE: This is a virtual function, therefore an abstract class
+    virtual void printTransaction() = 0;
+
+    // void display() const;
+    string getType(); // Can be B or R
+    Transaction* getNextTransaction();
+    void setLastTransaction(Transaction* transaction);
 
 };
 

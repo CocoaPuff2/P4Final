@@ -5,11 +5,17 @@
 #include "comedy.h"
 using namespace std;
 
+
 Comedy::Comedy(int stock, string director, string title, int year)
-        : Media('F', stock, director, title, year) {}
+        : Media('F', stock, director, title, year) {
+
+}
+
+Comedy::~Comedy(){
+
+}
 
 void Comedy::display() const {
-    cout << "Comedy - " << title << " (" << year
-              << "), Directed by " << director
-              << ", Stock: " << stock << endl;
+    cout << "F " << genre << " " << stock << " " << director << " " <<
+         title << " " << year << endl;
 }

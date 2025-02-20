@@ -11,19 +11,23 @@ using namespace std;
 class Classics : public Media {
 private:
 
-    string majorActor; // Major actor for the classic movie
+    string majorActorFirstName; // Major actor first name for the classic movie
+    string majorActorLastName; //  Major actor first last for the classic movie
     int releaseMonth;  // Release month of the classic movie
 
 public:
     // adds majorActor and releaseMonth
-    Classics(int stock, const string& director, const string& title,
-             string  majorActor, int releaseMonth, int year);
+    Classics(char genre, int stock, const string& director, const string& title,
+             string  majorActorFirstName, string majorActorLastName, int releaseMonth, int year);
 
-    void display() const override;
+    ~Classics();
 
-    // string getMajorActor() const;
+    void display() const; // specifically for classics
 
-   //  int getReleaseMonth() const;
+    string getMajorActorFirstName();
+    string getMajorActorLastName();
+
+    int getReleaseMonth();
 
 };
 
