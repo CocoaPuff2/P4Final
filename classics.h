@@ -22,7 +22,7 @@ public:
 
     ~Classics();
 
-    void display() const; // specifically for classics
+    void display() const; // specifically for classics, overrides the media version
 
     string getMajorActorFirstName();
     string getMajorActorLastName();

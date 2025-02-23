@@ -2,12 +2,13 @@
 #include <iostream>
 using namespace std;
 
-Drama::Drama(int stock, string director, string title, int year)
+Drama::Drama(char genre, int stock, string director, string title, int year)
         : Media('D', stock, director, title, year) {
 
 }
-Drama::~Drama() {
 
+Drama::~Drama() {
+   // todo:
 }
 
 void Drama::display() const {

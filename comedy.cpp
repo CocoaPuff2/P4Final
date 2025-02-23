@@ -6,12 +6,13 @@
 using namespace std;
 
 
-Comedy::Comedy(int stock, string director, string title, int year)
+Comedy::Comedy(char genre, int stock, string director, string title, int year)
         : Media('F', stock, director, title, year) {
 
 }
 
 Comedy::~Comedy(){
+    // todo
 
 }
 
