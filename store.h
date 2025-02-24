@@ -1,4 +1,3 @@
-
 #ifndef MY_EXECUTABLE_STORE_H
 #define MY_EXECUTABLE_STORE_H
 
@@ -11,42 +10,53 @@ using namespace std;
 
 class Store {
 private:
-    Customer* hashTable[10]; // to store the customers from input
-    // pointers for respective LL headers
+    // Hash table, stores customers, indexed by customerID.
+    Customer* hashTable[10];
+
+    // Pointers for  respective LL headers for different movie genres.
     Media *comedy;
     Media *drama;
     Media *classic;
 
 public:
+    // Default constructor, initializes the hash table and media pointers.
     Store();
+
+    // Destructor, deallocates memory
     ~Store();
-    void clearMedia(Media*); // for media LL cleanup
 
-    // read input
-    void readMovie(ifstream&); // read input stream (data4movies.txt)
-    void readCustomers(ifstream&); // read input stream (data4customers.txt)
-    void readCommands(ifstream&);
+    // Helper method, clear media linked list
+    void clearMedia(Media* media);
 
+    // Methods, read data from input streams (for customers and movies)
+    void readMovie(ifstream& file);  // Read movie data from file stream (data4movies.txt)
+    void readCustomers(ifstream& file);  // Read customer data from file stream (data4customers.txt)
+    void readCommands(ifstream& file);  // Read commands from file stream (data4commands.txt)
 
-    // Methods for Borrow
-    bool borrowComedyMovie(string movieName);
-    bool borrowDramaMovie(string movieName);
+    // Methods, borrowing movies
+    bool borrowComedyMovie(string movieName);  // Borrow comedy movie
+    bool borrowDramaMovie(string movieName);  // Borrow drama movie
+    // Borrows classic movie based on the major actor's name.
     bool borrowClassicsMovie(string firstName, string lastName);
 
-    // Methods for Return
-    bool returnComedyMovie(string movieName);
-    bool returnramaMovie(string movieName);
+    // Methods, returning movies
+    bool returnComedyMovie(string movieName);  // Return comedy movie.
+    bool returnDramaMovie(string movieName);  // Return  drama movie.
+    // Return classic movie based on the major actor's name.
     bool returnClassicsMovie(string firstName, string lastName);
 
-    // Customer, Command, and Movie methods
-    void hashTableAdd(); // add customer to the hastable
-    Customer* hashTableFind(int customerID); // to find a customer based on the customerID
+    // Customer, Command, and Movie methods.
+    void hashTableAdd();  // Add new customer to hash table.
+    Customer* hashTableFind(int customerID);  // Find customer in hash table, use customerID.
 
-    // todo: look at the rest
-    Media* factoryMovie(ifstream&, string);
-    void sortMovies(Media* string);
-    void processFactory(ifstream&, string, int, string);
-
+    // Media factory methods for creating movies based on input file data.
+    // Creates a movie based on given genre (Comedy, Drama, or Classics).
+    Media* factoryMedia(ifstream& file, string genre);
+    // todo: do we need?
+    void sortMedia(Media* media);
+    // Process when a specific movie is created (based on genre, stock, and title)
+    void processingFactory(ifstream& file, string genre, int stock, string title);
 
 };
+
 #endif //MY_EXECUTABLE_STORE_H
