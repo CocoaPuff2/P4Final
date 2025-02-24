@@ -21,7 +21,7 @@ public:
 
     // getters
     string getTitle();
-    string getYear();
+    int getYear();
 };
 
 #endif //MY_EXECUTABLE_TRANSACTIONCOMEDY_H
