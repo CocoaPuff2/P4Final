@@ -13,6 +13,7 @@ Customer::Customer() {
 }
 
 // param constructor
+// todo may need refinement
 Customer::Customer(int customerID, const string& firstName, const string& lastName)
         : customerID(customerID), firstName(firstName), lastName(lastName) {
     nextCustomer = nullptr;
@@ -30,17 +31,15 @@ Customer::~Customer() {
     }
 }
 
-// a setter function to add the next customer
-void Customer::addNewCustomer(Customer* customer) {
-    nextCustomer = customer;
-}
-
 // add new transaction
 void Customer::addTransaction(Transaction* transaction){
     if (startTransaction == nullptr) {
+        // no other transactions?
+        // then this is the first transaction in  LL
         startTransaction = transaction;
         return;
     }
+
     Transaction* temp = startTransaction;
     // while the next transaction is not the end of the transaction history
     while (temp->getNextTransaction() != nullptr) {
@@ -57,6 +56,13 @@ void Customer::displayHistory() const {
         return;
     }
 
+    /*
+    if (startTransaction == nullptr) {
+        cout << "    " << endl;
+    }
+
+     */
+
     // print each individual transaction
     Transaction* transaction = startTransaction;
     while (transaction != nullptr) {
@@ -68,27 +74,14 @@ void Customer::displayHistory() const {
 
 }
 
+// a setter function to add the next customer
+void Customer::addNewCustomer(Customer* customer) { nextCustomer = customer; }
+
 // getters
-Customer* Customer::getNextCustomer(){
-    return nextCustomer;
-}
-
-int Customer::getCustomerID() const {
-    return customerID;
-}
-
-string Customer::getFullName() {
-    return firstName + " " + lastName;
-}
-string Customer::getFirst() {
-    return firstName;
-
-}
-string Customer::getLast() {
-    return lastName;
-}
-
-Transaction *Customer::getStartTransaction() {
-    return startTransaction;
-}
+Customer* Customer::getNextCustomer(){ return nextCustomer; }
+int Customer::getCustomerID() const { return customerID; }
+string Customer::getFullName() { return firstName + " " + lastName; }
+string Customer::getFirst() { return firstName; }
+string Customer::getLast() { return lastName; }
+Transaction *Customer::getStartTransaction() { return startTransaction; }
 

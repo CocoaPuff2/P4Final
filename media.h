@@ -59,7 +59,8 @@ public:
     virtual string getMajorActorLastName();
 
     // is virtual so that the display works depending on the type of object that calls it
-    virtual void displayMedia() const = 0;
+    // NOTE: Media is an ABSTRACT class and it cannot be instantiated
+    virtual void display() const = 0;
 
 
    //  bool borrowMovie();

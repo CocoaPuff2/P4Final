@@ -42,17 +42,6 @@ int Media::getReleaseMonth() { return 0;}
 string Media::getMajorActorFirstName() { return " "; }
 string Media::getMajorActorLastName() {return " "; }
 
-
-// basic display
-void Media::displayMedia() const {
-    cout << "Is in the basic display for Media " << endl;
-    cout << "Title: " << title << ", Director: " << director
-              << ", Year: " << year << ", Stock: " << stock << std::endl;
-}
-
-
-
-
 /*
 bool Media::borrowMovie() {
     if (stock > 0) {

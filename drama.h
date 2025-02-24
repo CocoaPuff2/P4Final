@@ -11,7 +11,9 @@ using namespace std;
 class Drama : public Media {
     Drama(char genre, int stock, string director, string title, int year);
     ~Drama();
-    void display() const; // specifically for drama, overrides the media version
+    // specifically for dramas, overrides the media version
+    // const so that it doesn't modify the data, only reads it
+    void display() const;
 };
 
 #endif //MY_EXECUTABLE_DRAMA_H

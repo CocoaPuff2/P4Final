@@ -3,7 +3,7 @@
 using namespace std;
 
 Drama::Drama(char genre, int stock, string director, string title, int year)
-        : Media('D', stock, director, title, year) {
+        : Media(genre, stock, director, title, year) {
 
 }
 

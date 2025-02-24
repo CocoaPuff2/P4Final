@@ -8,22 +8,24 @@ using namespace std;
 // track borrow/return actions.
 class Transaction {
 private:
+    // todo string or char?
     char type;         // 'B' --> Borrow, 'R' --> Return
-    int customerID;
-    string movieTitle;
+    Transaction* nextTransaction;
+    // todo string or char?
+    char mediaType; // currently only D for DVD
 
 public:
     Transaction();
-    Transaction(char type, int customerID, string movieTitle);
+    // Transaction(char type, int customerID, string movieTitle);
     // NOTE: destructors should "ALWAYS" be virtual! :)
     virtual ~Transaction();
     // NOTE: This is a virtual function, therefore an abstract class
     virtual void printTransaction() = 0;
 
-    // void display() const;
-    string getType(); // Can be B or R
+    char getType(); // Can be B or R
+    char getMediaType();
     Transaction* getNextTransaction();
-    void setLastTransaction(Transaction* transaction);
+    void setNextTransaction(Transaction* transaction);
 
 };
 

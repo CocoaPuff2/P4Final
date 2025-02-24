@@ -16,17 +16,20 @@ private:
     int releaseMonth;  // Release month of the classic movie
 
 public:
-    // adds majorActor and releaseMonth
-    Classics(char genre, int stock, const string& director, const string& title,
+    // adds majorActorFirstName, majorActorLastName, and releaseMonth
+    // todo & or not for director and title strings?
+    Classics(char genre, int stock, const string director, const string title,
              string  majorActorFirstName, string majorActorLastName, int releaseMonth, int year);
 
     ~Classics();
 
-    void display() const; // specifically for classics, overrides the media version
+    // specifically for classics, overrides the media version
+    // const so that it doesn't modify the data, only reads it
+    void display() const;
 
+    // getters
     string getMajorActorFirstName();
     string getMajorActorLastName();
-
     int getReleaseMonth();
 
 };

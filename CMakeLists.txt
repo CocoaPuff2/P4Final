@@ -25,6 +25,8 @@ set(SOURCES
         transaction.h
         inventory.h
         customer.h
+        store.h
+        transactioncomedy.h
 )
 
 # Add executable target

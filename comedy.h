@@ -12,7 +12,9 @@ class Comedy : public Media {
 public:
     Comedy(char genre, int stock, string director, string title, int year);
     ~Comedy();
-    void display() const; // specifically for comedies, overrides the media version
+    // specifically for comedies, overrides the media version
+    // const so that it doesn't modify the data, only reads it
+    void display() const;
 };
 
 #endif //MY_EXECUTABLE_COMEDY_H

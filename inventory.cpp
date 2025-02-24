@@ -86,7 +86,7 @@ void Inventory::borrowItem(const std::string& title) {
     if (it != mediaList.end()) {
         // Check if the item is available for borrowing
         if (it->second->getStock() > 0) {
-            it->second->borrowMovie();  // decrease stock for the borrowed item
+            // it->second->borrowMovie();  // decrease stock for the borrowed item
             cout << "Successfully borrowed: " << title << std::endl;
         } else {
             cout << "Borrow Transaction Failed -- Not enough in the Stock" << endl;
@@ -100,7 +100,7 @@ void Inventory::borrowItem(const std::string& title) {
 void Inventory::returnItem(const std::string& title) {
     auto it = mediaList.find(title);
     if (it != mediaList.end()) {
-        it->second->returnMovie();
+       //  it->second->returnMovie();
         cout << "Successfully returned: " << title << std::endl;
     } else {
         cout << "Return Transaction Failed -- Movie does not Exist in the Inventory" << endl;

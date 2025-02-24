@@ -5,34 +5,19 @@ using namespace std;
 // default constructor
 Transaction::Transaction() {
     type = ' ';
-    customerID = 0000;
-    movieTitle = " ";
-}
-
-// param constructor
-Transaction::Transaction(char type, int customerID, string movieTitle)
-        : type(type), customerID(customerID), movieTitle(movieTitle) {
-
+    nextTransaction = nullptr;
+    mediaType = ' ';
 }
 
 // destructor
 Transaction::~Transaction() {
-
+// customer destructor performs deletions for this class
 }
 
-// Can be B or R
-string Transaction::getType() {
-
-}
-
-Transaction* Transaction::getNextTransaction(){
-
-}
-
-
-void Transaction::setLastTransaction(Transaction* transaction){
-
-}
+char Transaction::getType() { return type; } // Can be B or R
+char Transaction::getMediaType() {return mediaType; }
+Transaction* Transaction::getNextTransaction(){ return nextTransaction; }
+void Transaction::setNextTransaction(Transaction* transaction){ nextTransaction = transaction; }
 
 
 

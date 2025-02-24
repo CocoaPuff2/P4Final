@@ -30,8 +30,8 @@ private:
     int customerID;
     string firstName;
     string lastName;
-    Transaction* startTransaction; // to store history
-    Customer* nextCustomer;
+    Transaction* startTransaction; // head pointer to store transaction history for customer
+    Customer* nextCustomer; // head pointer for the LL of customers
 
 public:
     Customer();
@@ -39,15 +39,16 @@ public:
     // todo virtual?
     ~Customer();
 
+    // getters
     int getCustomerID() const;
-    Transaction* getStartTransaction();
     string getFullName();
     string getFirst();
     string getLast();
+    Transaction* getStartTransaction(); // pointer to head of transaction LL for the customer
+    Customer* getNextCustomer(); // pointer to the nxt customer in LL
 
-    Customer* getNextCustomer();
     void addNewCustomer(Customer* customer);
-    void addTransaction(Transaction* transaction); // add new transaction
+    void addTransaction(Transaction* transaction); // add a new transaction
     void displayHistory() const; // to display full transaction history
 
 
