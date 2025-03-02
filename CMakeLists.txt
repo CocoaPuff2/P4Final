@@ -14,21 +14,22 @@ set(SOURCES
         comedy.cpp
         drama.cpp
         customer.cpp
-        inventory.cpp
         media.cpp
         transaction.cpp
         customer.cpp
-        inventory.cpp
         classics.h
         comedy.h
         drama.h
         transaction.h
-        inventory.h
         customer.h
         store.h
-        transactioncomedy.h
-        transactiondrama.h
-        transactionsclassics.h
+        transactionforcomedy.h
+        transactionfordrama.h
+        transactionsforclassics.h
+        transactionforcomedy.cpp
+        transactionfordrama.cpp
+        transactionforclassics.cpp
+        store.cpp
 )
 
 # Add executable target

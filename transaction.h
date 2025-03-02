@@ -8,7 +8,7 @@ using namespace std;
 
 // The Transaction class tracks borrow and return actions performed by customers.
 class Transaction {
-private:
+protected:
     // todo char or string?
     // 'B' --> Borrow transaction
     // 'R' --> Return transaction

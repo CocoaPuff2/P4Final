@@ -2,7 +2,6 @@
 #include <fstream>
 #include "customer.h"
 #include "media.h"
-#include "inventory.h"
 #include "transaction.h"
 #include "comedy.h"
 #include "classics.h"
@@ -19,7 +18,7 @@ int main() {
         return 1;
     }
 
-    Inventory inventory;  // Inventory object to store movies
+    // Inventory inventory;  // Inventory object to store movies
     string line;
 
     while (getline(infile, line)) {
