@@ -14,7 +14,8 @@ using namespace std;
  * transactions, like borrowing and returning movies.
  */
 class Store {
-private:
+    // todo: changed to protected from private
+protected:
     /*
      * Hash table for storing customers, indexed by customer ID.
      * The hash table size is fixed at 10 for simplicity.
@@ -116,7 +117,7 @@ public:
      * - Check for collision and handle if necessary.
      * - Insert customer into hashTable at the computed index.
      */
-    void hashTableAdd();
+    void hashTableAdd(int customerID, string customerFirstName, string customerLastName);
 
     /*
      * Finds and returns a customer based on their customer ID.
@@ -134,7 +135,7 @@ public:
      * Sorts a linked list of Media objects.
      * Note: Sorting method and criteria depend on movie type
      */
-    void sortMedia(Media* media);
+    void sortMedia(Media* media, string genre);
 
     /*
      * Processes a specific movie entry when it is created.
@@ -143,6 +144,18 @@ public:
      * - Add movie to the appropriate media linked list.
      */
     void processingFactoryMethod(ifstream& file, string genre, int stock, string title);
+    void printTotalInventory();
+
+    // getters for private values
+    Media* getComedyHead() const { return comedy; }
+    Media* getDramaHead() const { return drama; }
+    Media* getClassicHead() const { return classic; }
+
+
+    // setters for private values
+    void setClassicLLHead(Media* media) {
+        classic = media;
+    }
 };
 
 #endif // MY_EXECUTABLE_STORE_H

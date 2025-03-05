@@ -9,6 +9,7 @@ using namespace std;
 #define MY_EXECUTABLE_DRAMA_H
 
 class Drama : public Media {
+public:
     Drama(char genre, int stock, string director, string title, int year);
     ~Drama();
     // specifically for dramas, overrides the media version

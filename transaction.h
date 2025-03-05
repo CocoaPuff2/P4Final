@@ -13,13 +13,13 @@ protected:
     // 'B' --> Borrow transaction
     // 'R' --> Return transaction
     // type of transaction
-    char type;
+    string type;
 
     // Pointer to next transaction in LL of transactions
     Transaction* nextTransaction;
 
     // Type of media involved in the transaction (only 'D' for DVD works currently)
-    char mediaType;
+    string mediaType;
 
 public:
     // Default constructor, initializes a new Transaction object.
@@ -34,10 +34,10 @@ public:
     virtual void printTransaction() = 0;
 
     // Getter for the type of the transaction (can be 'B' or 'R')
-    char getType();
+    string getType();
 
     // Getter for the media type (can only be 'D' for DVD)
-    char getMediaType();
+    string getMediaType();
 
     // Getter for the pointer to the next transaction in LL
     Transaction* getNextTransaction();

@@ -46,7 +46,7 @@ void Customer::addTransaction(Transaction* transaction){
         temp = temp->getNextTransaction(); // move the transaction forward
     }
     // temp is the new last transaction now!
-    temp->setLastTransaction(transaction);
+    temp->setNextTransaction(transaction);
 }
 
 // to display full transaction history
